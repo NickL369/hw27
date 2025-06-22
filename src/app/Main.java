@@ -9,9 +9,11 @@ public class Main {
         try (Connection conn = DriverManager.getConnection(url, user, password);
              Statement stmt = conn.createStatement()) {
 
-            stmt.executeUpdate("INSERT INTO users (name, age, email) VALUES ('Name1', 1, 'Name1@gmail.com')");
-            stmt.executeUpdate("INSERT INTO users (name, age, email) VALUES ('Name2', 2, 'Name2@gmail.com')");
-            stmt.executeUpdate("INSERT INTO users (name, age, email) VALUES ('Name3', 3, 'Name3@gmail.com')");
+            stmt.executeUpdate("INSERT INTO users (name, age, email) VALUES ('John', 30, 'john@example.com')");
+            stmt.executeUpdate("INSERT INTO users (name, age, email) VALUES ('Alice', 25, 'alice@example.com')");
+            stmt.executeUpdate("INSERT INTO users (name, age, email) VALUES ('Bob', 35, 'bob@example.com')");
+//перепушив з корректними данними згідно дз, але скрін не додавав новий
+
 
             System.out.println("After insert:");
             ResultSet rs = stmt.executeQuery("SELECT * FROM users");
@@ -20,7 +22,7 @@ public class Main {
                         rs.getInt("age") + " " + rs.getString("email"));
             }
 
-            stmt.executeUpdate("DELETE FROM users WHERE name = 'Name3'");
+            stmt.executeUpdate("DELETE FROM users WHERE name = 'Bob'");
 
             System.out.println("\nAfter delete:");
             rs = stmt.executeQuery("SELECT * FROM users");
